@@ -1036,16 +1036,18 @@ body.mode-final #nu {
 
 .photo-actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .btn-sm-action {
-  padding: 10px 22px;
-  font-size: 0.88rem;
+  padding: 8px 18px;
+  font-size: 0.86rem;
   font-weight: 600;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 122, 184, 0.7);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 122, 184, 0.75);
   background: rgba(255, 122, 184, 0.2);
   color: #ffd7ea;
   cursor: pointer;
@@ -1053,7 +1055,10 @@ body.mode-final #nu {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   box-shadow: 0 0 14px rgba(255, 122, 184, 0.35);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-sm-action:hover {
@@ -1063,8 +1068,12 @@ body.mode-final #nu {
   transform: translateY(-2px);
 }
 
+.btn-sm-action:active {
+  transform: scale(0.94);
+}
+
 .btn-bday-wish {
-  border-color: rgba(255, 217, 138, 0.75);
+  border-color: rgba(255, 217, 138, 0.85);
   background: rgba(255, 217, 138, 0.2);
   color: #ffeaa7;
   box-shadow: 0 0 14px rgba(255, 217, 138, 0.35);
@@ -1074,6 +1083,15 @@ body.mode-final #nu {
   background: var(--gold);
   color: #2b1120;
   box-shadow: 0 0 26px var(--gold);
+}
+
+.btn-act-icon {
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+.btn-act-text {
+  letter-spacing: 0.02em;
 }
 
 /* Letter Paper */
@@ -1142,29 +1160,42 @@ body.mode-final #nu {
 
 .letter-footer-actions {
   display: flex;
-  gap: 12px;
-  margin-top: 18px;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(255, 122, 184, 0.3);
+  width: 100%;
 }
 
 .btn-neon-action {
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: 1px solid var(--pink);
-  background: linear-gradient(135deg, rgba(255, 122, 184, 0.3), rgba(255, 77, 141, 0.2));
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 1.5px solid var(--pink);
+  background: linear-gradient(135deg, rgba(255, 122, 184, 0.32), rgba(255, 77, 141, 0.22));
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 0.94rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 14px rgba(255, 122, 184, 0.4);
-  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 0 16px rgba(255, 122, 184, 0.45);
+  transition: all 0.25s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-neon-action:hover {
   background: var(--pink);
   color: #1a0a25;
-  box-shadow: 0 0 24px var(--pink);
+  box-shadow: 0 0 26px var(--pink);
   transform: translateY(-2px);
+}
+
+.btn-neon-action:active {
+  transform: scale(0.95);
 }
 
 .btn-neon-action.alt {
@@ -1290,54 +1321,167 @@ body.mode-final #nu {
    RESPONSIVE DESIGN (MOBILE ADAPTATION)
    ========================================================== */
 @media (max-width: 820px) {
-  /* Tối ưu cuộn mượt mà trên iPhone & Android cho màn hình thư */
-  #sc-final {
-    top: calc(4% + env(safe-area-inset-top));
-    bottom: calc(4% + env(safe-area-inset-bottom));
-    left: 4%;
-    right: 4%;
-    height: auto;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    display: block;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 122, 184, 0.4) transparent;
+  /* Ẩn nút nhảy đến thư khi đã ở màn hình thư cuối */
+  body.mode-final .hud-jump-btn {
+    display: none !important;
   }
 
   /* Ẩn Nụ ở màn hình kết thúc trên mobile để nhường toàn bộ khung nhìn cho ảnh và thư */
   body.mode-final #nu {
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.2);
+    display: none !important;
+  }
+
+  /* Khung cuộn toàn màn hình mượt mà trên mobile */
+  #sc-final {
+    position: absolute;
+    inset: 0;
+    top: calc(8px + env(safe-area-inset-top));
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 14px 64px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 122, 184, 0.4) transparent;
   }
 
   .final-container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    max-width: 480px;
     max-height: none;
     overflow: visible;
-    padding-bottom: 35px;
-    gap: 18px;
-  }
-
-  .final-photo-card {
-    max-width: 300px;
     margin: 0 auto;
-    width: 100%;
   }
 
+  /* Card ảnh Polaroid */
+  .final-photo-card {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 14px 14px 16px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 122, 184, 0.2);
+    gap: 12px;
+  }
+
+  .polaroid-wrapper {
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto;
+    padding: 8px 8px 12px;
+    border-radius: 12px;
+  }
+
+  .photo-box {
+    aspect-ratio: 4 / 4.6;
+    border-radius: 8px;
+  }
+
+  .photo-caption-bar {
+    padding: 8px 4px 2px;
+  }
+
+  .caption-date {
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+  }
+
+  /* Hàng nút bấm tương tác dưới ảnh: Thả tim & Nổ pháo hoa */
+  .photo-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .btn-sm-action {
+    flex: 1;
+    max-width: 140px;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    gap: 6px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* Card Bức thư tình */
   .final-letter-card {
-    padding: 22px 18px;
+    width: 100%;
+    padding: 22px 18px 26px;
+    border-radius: 20px;
+    overflow: visible;
     user-select: text;
     -webkit-user-select: text;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 122, 184, 0.18);
+  }
+
+  .letter-badge {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 8px;
   }
 
   .letter-heading {
-    font-size: 1.35rem;
+    font-size: clamp(1.2rem, 5vw, 1.45rem);
+    line-height: 1.35;
+    text-align: center;
+    margin-bottom: 14px;
   }
 
   .letter-body {
     font-size: 0.95rem;
-    line-height: 1.75;
+    line-height: 1.8;
+  }
+
+  .letter-body p {
+    margin-bottom: 12px;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+  .letter-body p.signature {
+    font-size: 1.55rem;
+    margin-top: 18px;
+    text-align: right;
+  }
+
+  /* Hàng nút bấm dưới cùng của thư: Xem lại từ đầu */
+  .letter-footer-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(255, 122, 184, 0.3);
+    width: 100%;
+  }
+
+  .btn-neon-action {
+    width: 100%;
+    max-width: 280px;
+    padding: 12px 20px;
+    font-size: 0.92rem;
+    border-radius: 999px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 }
 

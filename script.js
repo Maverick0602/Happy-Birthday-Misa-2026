@@ -874,7 +874,13 @@ document.addEventListener('DOMContentLoaded', () => {
       state.isCakeBlown = false;
 
       const cakeBox = $('#cake-interactive-box');
-      if (cakeBox) cakeBox.classList.remove('is-blown');
+      if (cakeBox) {
+        cakeBox.classList.remove('is-blown');
+        const tapText = cakeBox.querySelector('.cake-tap-text');
+        const tapIcon = cakeBox.querySelector('.cake-tap-icon');
+        if (tapText) tapText.textContent = 'Sau khi ước xong hãy chạm vào đây nhé ✨';
+        if (tapIcon) tapIcon.textContent = '🎂';
+      }
 
       if (typewriter) typewriter.cancel();
       goToStep(0);
