@@ -1,0 +1,6 @@
+# Temp files
+*.cpp
+*.exe
+*.o
+.DS_Store
+Thumbs.db

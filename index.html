@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>Chúc Mừng Sinh Nhật Em Bé Yêu 06/11 ✨ | Happy Birthday My Princess 🎂</title>
+
+  <!-- Google Fonts: Be Vietnam Pro + Dancing Script + Pacifico + Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-neon">
+
+  <!-- Background Aurora Mesh Gradients -->
+  <div class="aurora" aria-hidden="true">
+    <i></i><i></i><i></i>
+  </div>
+
+  <!-- Dynamic Canvas for Floating Hearts, Sparkles, Falling Petals & Birthday Balloons -->
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- Top Progress Bar -->
+  <div id="prog-bar" aria-hidden="true"></div>
+
+  <!-- Sound Toggle Button -->
+  <button id="btn-sound" class="hud-sound-btn" type="button" aria-label="Bật/Tắt âm thanh" title="Âm thanh">
+    <svg class="sound-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    <svg class="sound-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+
+  <!-- Skip / Jump to Letter Button -->
+  <button id="btn-jump-letter" class="hud-jump-btn" type="button">
+    <span>💌 Xem Thư Sinh Nhật</span>
+  </button>
+
+  <!-- STAGE CONTAINER -->
+  <div id="stage">
+
+    <!-- CHARACTER: NÀNG TIÊN NỤ (ANIMATED MASCOT VỚI VƯƠNG MIỆN CÔNG CHÚA HOA) -->
+    <div id="nu" class="wave" aria-hidden="true">
+      <div class="nu-glow"></div>
+      <svg class="nu-svg" viewBox="0 0 240 300">
+        <defs>
+          <radialGradient id="eyeG" cx=".5" cy=".35" r=".75">
+            <stop offset="0" stop-color="#fff"/>
+            <stop offset=".5" stop-color="#ffd3e8"/>
+            <stop offset="1" stop-color="#ff7ab8"/>
+          </radialGradient>
+          <linearGradient id="tiaraGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffeaa7"/>
+            <stop offset="50%" stop-color="#ffd98a"/>
+            <stop offset="100%" stop-color="#f39c12"/>
+          </linearGradient>
+        </defs>
+        <g class="head">
+          <g class="head-tilt">
+            <!-- Nụ hoa cơ thể phát sáng neon -->
+            <path class="nbud" d="M120 44C62 92 54 152 68 204c10 34 94 34 104 0 14-52 6-112-52-160z" fill="rgba(255,122,184,.1)" stroke="#ff7ab8" stroke-width="3.2" stroke-linejoin="round"/>
+            <path d="M120 44C119 30 114 20 106 12M120 44c2-14 10-22 20-26" fill="none" stroke="#7dffd0" stroke-width="3" stroke-linecap="round"/>
+            
+            <!-- Vương miện sinh nhật công chúa hoa trên đầu Nụ -->
+            <g class="nu-tiara" transform="translate(120, 42)">
+              <path d="M-22 4 Q0 -4 22 4" fill="none" stroke="url(#tiaraGold)" stroke-width="2.5" stroke-linecap="round"/>
+              <polygon points="0,-18 -6,2 6,2" fill="url(#tiaraGold)" stroke="#ffd98a" stroke-linejoin="round"/>
+              <polygon points="-15,-11 -19,4 -11,4" fill="url(#tiaraGold)" stroke="#ffd98a" stroke-linejoin="round"/>
+              <polygon points="15,-11 11,4 19,4" fill="url(#tiaraGold)" stroke="#ffd98a" stroke-linejoin="round"/>
+              <!-- Viên ngọc hoa hồng lấp lánh -->
+              <circle cx="0" cy="-6" r="3.5" fill="#ff4d8d" filter="drop-shadow(0 0 5px #ff4d8d)"/>
+              <circle cx="-15" cy="-3" r="2.5" fill="#7dffd0"/>
+              <circle cx="15" cy="-3" r="2.5" fill="#ff9ec7"/>
+              <!-- Ngôi sao nhỏ đỉnh vương miện -->
+              <polygon points="0,-24 2,-20 6,-19 2,-17 0,-13 -2,-17 -6,-19 -2,-20" fill="#ffffff" filter="drop-shadow(0 0 4px #fff)"/>
+            </g>
+
+            <!-- Tay trái và phải -->
+            <g class="arm-l">
+              <path d="M70 214C50 218 38 206 36 190c18-2 32 6 34 24z" fill="rgba(125,255,208,.25)" stroke="#7dffd0" stroke-width="2.5" stroke-linejoin="round"/>
+            </g>
+            <g class="arm-r">
+              <path d="M170 214c20 4 32-8 34-24-18-2-32 6-34 24z" fill="rgba(125,255,208,.25)" stroke="#7dffd0" stroke-width="2.5" stroke-linejoin="round"/>
+            </g>
+            
+            <!-- Má hồng xinh xắn -->
+            <ellipse class="blush" cx="78" cy="186" rx="11" ry="5.5" fill="#ff7ab8"/>
+            <ellipse class="blush" cx="162" cy="186" rx="11" ry="5.5" fill="#ff7ab8"/>
+            
+            <!-- Đôi mắt to tròn chớp nháy -->
+            <g class="eye eyeL" style="transform-origin:96px 152px">
+              <rect x="82" y="128" width="28" height="48" rx="14" fill="url(#eyeG)"/>
+              <ellipse cx="91" cy="142" rx="4" ry="6" fill="#fff"/>
+            </g>
+            <g class="eye eyeR" style="transform-origin:144px 152px">
+              <rect x="130" y="128" width="28" height="48" rx="14" fill="url(#eyeG)"/>
+              <ellipse cx="139" cy="142" rx="4" ry="6" fill="#fff"/>
+            </g>
+            
+            <!-- Mắt cười híp khi hạnh phúc -->
+            <path class="arcL" d="M80 162Q96 138 112 162" stroke="#ffd3e8" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path class="arcR" d="M128 162Q144 138 160 162" stroke="#ffd3e8" stroke-width="5" fill="none" stroke-linecap="round"/>
+            
+            <!-- Miệng nhỏ xinh -->
+            <path class="mouth-c" d="M110 196Q120 206 130 196" stroke="#ffd3e8" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <ellipse class="mouth-o" cx="120" cy="199" rx="7" ry="7" fill="#ffd3e8"/>
+            
+            <!-- Ngôi sao nháy mắt khi tinh nghịch -->
+            <g class="wink-star" fill="#ffd98a">
+              <path transform="translate(10 52)" d="M170 100l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- DIALOGUE SPEECH BUBBLE -->
+    <div id="bubble" class="empty">
+      <div id="line"></div>
+    </div>
+
+    <!-- TAP HINT -->
+    <div id="tap-hint">chạm để tiếp tục ✦</div>
+
+    <!-- SCENE 1: BIG DATE (06 / 11 - SINH NHẬT) -->
+    <section class="scene" id="sc-date">
+      <div class="bigdate bday-date">
+        <span>06</span><i>•</i><span>11</span>
+      </div>
+      <p class="date-sub">Happy Birthday My Princess 🎂</p>
+      <div class="date-bday-sparkles" aria-hidden="true">
+        <span>✦</span><span>✨</span><span>💖</span><span>🎉</span>
+      </div>
+    </section>
+
+    <!-- SCENE 2: INTERACTIVE BIRTHDAY CAKE & CANDLES (BÁNH KEM & THỔI NẾN) -->
+    <section class="scene" id="sc-cake">
+      <div class="cake-box" id="cake-interactive-box" title="Chạm để thổi nến và ước nguyện!">
+        <svg class="cake-svg" viewBox="0 0 340 330">
+          <defs>
+            <linearGradient id="tierBottom" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ff9ec7"/>
+              <stop offset="100%" stop-color="#ff4d8d"/>
+            </linearGradient>
+            <linearGradient id="tierMid" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffeaa7"/>
+              <stop offset="100%" stop-color="#ffb3d1"/>
+            </linearGradient>
+            <linearGradient id="tierTop" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#ff85a2"/>
+            </linearGradient>
+            <linearGradient id="flameGrad" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#ff3838"/>
+              <stop offset="50%" stop-color="#ff9f43"/>
+              <stop offset="100%" stop-color="#feca57"/>
+            </linearGradient>
+            <radialGradient id="cakeGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255, 122, 184, 0.45)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Vầng sáng xung quanh bánh -->
+          <ellipse cx="170" cy="200" rx="160" ry="110" fill="url(#cakeGlow)"/>
+
+          <!-- Đĩa bánh pha lê viền vàng -->
+          <ellipse cx="170" cy="285" rx="135" ry="18" fill="rgba(255, 217, 138, 0.22)" stroke="#ffd98a" stroke-width="2"/>
+          <path d="M140 285 L145 305 L195 305 L200 285 Z" fill="#ffd98a" opacity="0.35"/>
+
+          <!-- Tầng 1: Tầng đáy dâu tây hoa hồng -->
+          <path d="M60 215 C60 205 70 200 85 200 L255 200 C270 200 280 205 280 215 L280 260 C280 274 230 285 170 285 C110 285 60 274 60 260 Z" fill="url(#tierBottom)" stroke="#fff" stroke-width="1.5"/>
+          <!-- Kem chảy lượn sóng mềm mại -->
+          <path d="M60 215 Q75 236 90 215 Q105 238 120 215 Q145 240 170 215 Q195 240 220 215 Q235 238 250 215 Q265 236 280 215" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+
+          <!-- Họa tiết hoa & trái tim tầng đáy -->
+          <circle cx="95" cy="250" r="4" fill="#ffd98a"/>
+          <circle cx="135" cy="255" r="4.5" fill="#ffffff"/>
+          <circle cx="170" cy="258" r="5" fill="#ffd98a"/>
+          <circle cx="205" cy="255" r="4.5" fill="#ffffff"/>
+          <circle cx="245" cy="250" r="4" fill="#ffd98a"/>
+
+          <!-- Tầng 2: Tầng giữa kem vani dâu -->
+          <path d="M92 155 C92 148 102 144 115 144 L225 144 C238 144 248 148 248 155 L248 198 C248 208 214 214 170 214 C126 214 92 208 92 198 Z" fill="url(#tierMid)" stroke="#fff" stroke-width="1.5"/>
+          <path d="M92 155 Q107 176 122 155 Q145 178 170 155 Q195 178 218 155 Q233 176 248 155" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+
+          <!-- Tầng 3: Tầng trên cùng kem sữa phô mai -->
+          <path d="M118 106 C118 100 128 96 140 96 L200 96 C212 96 222 100 222 106 L222 145 C222 152 198 156 170 156 C142 156 118 152 118 145 Z" fill="url(#tierTop)" stroke="#fff" stroke-width="1.5"/>
+          <path d="M118 106 Q132 122 144 106 Q157 124 170 106 Q183 124 196 106 Q209 122 222 106" fill="none" stroke="#ff7ab8" stroke-width="3" stroke-linecap="round"/>
+
+          <!-- Trái dâu tây đỏ mọng trên đỉnh bánh -->
+          <circle cx="132" cy="94" r="7" fill="#ff3366" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.2))"/>
+          <circle cx="170" cy="92" r="8" fill="#ff3366" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.2))"/>
+          <circle cx="208" cy="94" r="7" fill="#ff3366" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.2))"/>
+
+          <!-- 3 Ngọn nến lung linh ước nguyện -->
+          <!-- Nến trái -->
+          <g class="candle-unit c-left">
+            <rect x="141" y="66" width="7" height="30" rx="3.5" fill="#ffd98a" stroke="#fff" stroke-width="0.8"/>
+            <line x1="144.5" y1="66" x2="144.5" y2="58" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+            <path class="candle-flame f1" d="M144.5 60 Q140 50 144.5 40 Q149 50 144.5 60 Z" fill="url(#flameGrad)"/>
+          </g>
+          <!-- Nến giữa (cao nhất) -->
+          <g class="candle-unit c-center">
+            <rect x="166.5" y="56" width="7" height="38" rx="3.5" fill="#ff7ab8" stroke="#fff" stroke-width="0.8"/>
+            <line x1="170" y1="56" x2="170" y2="47" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+            <path class="candle-flame f2" d="M170 50 Q165 38 170 26 Q175 38 170 50 Z" fill="url(#flameGrad)"/>
+          </g>
+          <!-- Nến phải -->
+          <g class="candle-unit c-right">
+            <rect x="192" y="66" width="7" height="30" rx="3.5" fill="#a99bff" stroke="#fff" stroke-width="0.8"/>
+            <line x1="195.5" y1="66" x2="195.5" y2="58" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+            <path class="candle-flame f3" d="M195.5 60 Q191 50 195.5 40 Q200 50 195.5 60 Z" fill="url(#flameGrad)"/>
+          </g>
+
+          <!-- Làn khói ảo diệu sau khi thổi nến (hiện ra khi thổi) -->
+          <g class="candle-smoke" opacity="0">
+            <path d="M144 55 Q138 35 146 20 Q152 8 148 0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+            <path d="M170 45 Q162 25 174 12 Q180 2 172 -6" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+            <path d="M196 55 Q204 35 194 20 Q188 8 195 0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+          </g>
+
+          <!-- Ngôi sao lấp lánh xung quanh bánh -->
+          <g class="cake-sparkles" fill="#ffd98a">
+            <polygon class="c-spark sp1" points="70,120 73,126 79,129 73,132 70,138 67,132 61,129 67,126"/>
+            <polygon class="c-spark sp2" points="270,120 273,126 279,129 273,132 270,138 267,132 261,129 267,126"/>
+            <polygon class="c-spark sp3" points="170,10 173,15 178,17 173,19 170,24 167,19 162,17 167,15"/>
+          </g>
+        </svg>
+
+        <div class="cake-tap-label" id="cake-tap-label" role="button" aria-label="Chạm để thổi nến">
+          <span class="cake-tap-icon">🎂</span>
+          <span class="cake-tap-text">Sau khi ước xong hãy chạm vào đây nhé ✨</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 3: HEALTH (NHỊP TIM HỒNG + SỨC KHỎE TUỔI MỚI) -->
+    <section class="scene" id="sc-health">
+      <div class="health-box">
+        <svg class="ecg" viewBox="0 0 420 100" preserveAspectRatio="none">
+          <path pathLength="100" d="M0 52 H120 L138 44 156 52 H176 L190 18 206 88 222 6 240 52 H270 L286 45 304 52 H420"/>
+        </svg>
+        <svg class="heart-pulse" viewBox="0 0 100 92">
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffb3d1"/>
+              <stop offset="1" stop-color="#ff4f8b"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 88C36 76 4 56 4 30 4 10 28 2 40 14c5 5 8 9 10 14 2-5 5-9 10-14C72 2 96 10 96 30c0 26-32 46-46 58z" fill="url(#hg)" stroke="#fff" stroke-opacity=".7" stroke-width="1.5"/>
+          <path d="M20 24c3-8 12-11 18-7" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="plus-glow p1">+</span>
+        <span class="plus-glow p2">+</span>
+        <span class="plus-glow p3">+</span>
+      </div>
+    </section>
+
+    <!-- SCENE 4: PEACE (HỒ SEN TRĂNG BÌNH YÊN & MAY MẮN) -->
+    <section class="scene" id="sc-peace">
+      <div class="pond-box">
+        <svg viewBox="0 0 300 210">
+          <defs>
+            <radialGradient id="moonG"><stop offset="0" stop-color="#fffdf2"/><stop offset="1" stop-color="#ffe9b5"/></radialGradient>
+            <linearGradient id="lotG" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff8fbd"/><stop offset="1" stop-color="#fff0f7"/></linearGradient>
+          </defs>
+          <circle cx="245" cy="34" r="30" fill="rgba(255,235,190,.16)"/>
+          <circle cx="245" cy="34" r="16" fill="url(#moonG)"/>
+          <ellipse cx="150" cy="158" rx="140" ry="40" fill="rgba(120,180,230,.10)" stroke="rgba(190,230,255,.25)"/>
+          <ellipse class="ripple-ring" cx="150" cy="158" rx="110" ry="28" style="animation-delay:0s"/>
+          <ellipse class="ripple-ring" cx="150" cy="158" rx="110" ry="28" style="animation-delay:1.6s"/>
+          <ellipse class="ripple-ring" cx="150" cy="158" rx="110" ry="28" style="animation-delay:3.2s"/>
+          <g class="lotus">
+            <path d="M150 160 C108 150 100 112 150 90 C200 112 192 150 150 160Z" fill="url(#lotG)" opacity=".5" transform="rotate(-38 150 160)"/>
+            <path d="M150 160 C108 150 100 112 150 90 C200 112 192 150 150 160Z" fill="url(#lotG)" opacity=".5" transform="rotate(38 150 160)"/>
+            <path d="M150 160 C112 148 108 108 150 84 C192 108 188 148 150 160Z" fill="url(#lotG)" opacity=".8" transform="rotate(-18 150 160)"/>
+            <path d="M150 160 C112 148 108 108 150 84 C192 108 188 148 150 160Z" fill="url(#lotG)" opacity=".8" transform="rotate(18 150 160)"/>
+            <path d="M150 162 C118 150 120 104 150 78 C180 104 182 150 150 162Z" fill="url(#lotG)" stroke="#fff" stroke-opacity=".7"/>
+            <circle cx="150" cy="152" r="4" fill="#ffe28a"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SCENE 5: FREEDOM (BƯỚM PHÁT SÁNG BAY LƯỢN RỰC RỠ) -->
+    <section class="scene" id="sc-free">
+      <div class="sky-box">
+        <svg class="bfly b1" viewBox="0 0 80 50"><ellipse class="bw r" cx="57" cy="19" rx="17" ry="14" fill="#c9b3ff"/><ellipse class="bw l" cx="23" cy="19" rx="17" ry="14" fill="#ffb5da"/><rect x="39" y="10" width="2.2" height="30" rx="1.1" fill="#fff"/></svg>
+        <svg class="bfly b2" viewBox="0 0 80 50"><ellipse class="bw r" cx="57" cy="19" rx="17" ry="14" fill="#ffe0a6"/><ellipse class="bw l" cx="23" cy="19" rx="17" ry="14" fill="#ffc2dd"/><rect x="39" y="10" width="2.2" height="30" rx="1.1" fill="#fff"/></svg>
+        <svg class="bfly b3" viewBox="0 0 80 50"><ellipse class="bw r" cx="57" cy="19" rx="17" ry="14" fill="#a8e6ff"/><ellipse class="bw l" cx="23" cy="19" rx="17" ry="14" fill="#d9c4ff"/><rect x="39" y="10" width="2.2" height="30" rx="1.1" fill="#fff"/></svg>
+      </div>
+    </section>
+
+    <!-- SCENE 6: LOVE (VÒNG TRÁI TIM TÌNH YÊU TRỌN VẸN) -->
+    <section class="scene" id="sc-love">
+      <div class="lovering">
+        <div class="orbit">
+          <i style="transform:rotate(0deg) translateY(-380%)">🌸</i>
+          <i style="transform:rotate(45deg) translateY(-380%)">🎂</i>
+          <i style="transform:rotate(90deg) translateY(-380%)">💖</i>
+          <i style="transform:rotate(135deg) translateY(-380%)">✨</i>
+          <i style="transform:rotate(180deg) translateY(-380%)">🌷</i>
+          <i style="transform:rotate(225deg) translateY(-380%)">👑</i>
+          <i style="transform:rotate(270deg) translateY(-380%)">💕</i>
+          <i style="transform:rotate(315deg) translateY(-380%)">🎉</i>
+        </div>
+        <svg class="bigheart" viewBox="0 0 100 92">
+          <defs>
+            <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc2dd"/><stop offset="1" stop-color="#ff5f9a"/></linearGradient>
+          </defs>
+          <path d="M50 88C36 76 4 56 4 30 4 10 28 2 40 14c5 5 8 9 10 14 2-5 5-9 10-14C72 2 96 10 96 30c0 26-32 46-46 58z" fill="url(#hg2)" stroke="#fff" stroke-opacity=".7" stroke-width="1.5"/>
+          <path d="M20 24c3-8 12-11 18-7" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SCENE 7: BLOOMING BOUQUET (BÓ HOA SINH NHẬT NỞ RỘ KỲ DIỆU) -->
+    <section class="scene" id="sc-gift">
+      <div class="bouquet">
+        <div class="bq-sway">
+          <svg viewBox="0 0 300 340">
+            <defs>
+              <linearGradient id="wrapG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd0e6"/><stop offset="1" stop-color="#ff8fbd"/></linearGradient>
+              <radialGradient id="pet1" cx=".5" cy=".8"><stop offset="0" stop-color="#ff7fb0"/><stop offset="1" stop-color="#ffe3ef"/></radialGradient>
+              <radialGradient id="pet2" cx=".5" cy=".8"><stop offset="0" stop-color="#b79bff"/><stop offset="1" stop-color="#f1eaff"/></radialGradient>
+              <radialGradient id="pet3" cx=".5" cy=".8"><stop offset="0" stop-color="#ffc66b"/><stop offset="1" stop-color="#fff4d6"/></radialGradient>
+              <g id="flower-petal-unit">
+                <ellipse cx="0" cy="-17" rx="8" ry="17"/>
+                <ellipse cx="0" cy="-17" rx="8" ry="17" transform="rotate(45)"/>
+                <ellipse cx="0" cy="-17" rx="8" ry="17" transform="rotate(90)"/>
+                <ellipse cx="0" cy="-17" rx="8" ry="17" transform="rotate(135)"/>
+                <ellipse cx="0" cy="-17" rx="8" ry="17" transform="rotate(180)"/>
+                <ellipse cx="0" cy="-17" rx="8" ry="17" transform="rotate(225)"/>
+                <ellipse cx="0" cy="-17" rx="8" ry="17" transform="rotate(270)"/>
+                <ellipse cx="0" cy="-17" rx="8" ry="17" transform="rotate(315)"/>
+              </g>
+            </defs>
+            <g fill="none" stroke="#4fc79b" stroke-width="3" stroke-linecap="round">
+              <path class="stem" style="--d:.1s" d="M150 300 C150 240 120 190 84 120"/>
+              <path class="stem" style="--d:.25s" d="M150 300 C150 230 140 170 150 84"/>
+              <path class="stem" style="--d:.35s" d="M150 300 C150 240 180 190 216 120"/>
+            </g>
+            <!-- Giấy gói hoa lụa hồng sinh nhật -->
+            <path d="M150 320 L75 220 C100 200 130 210 150 220 C170 210 200 200 225 220 Z" fill="url(#wrapG)" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>
+            <!-- Nơ ruy băng vàng kim -->
+            <path d="M150 235 C135 225 125 240 145 245 C125 250 135 265 150 250 C165 265 175 250 155 245 C175 240 165 225 150 235 Z" fill="#ffd98a" stroke="#fff" stroke-width="1"/>
+            
+            <!-- Các bông hoa nở từng cánh rực rỡ -->
+            <g class="fl fl1" style="--d:.4s" transform="translate(84 120)" fill="url(#pet1)"><use href="#flower-petal-unit"/><circle cx="0" cy="0" r="6" fill="#ffd98a"/></g>
+            <g class="fl fl2" style="--d:.6s" transform="translate(150 84)" fill="url(#pet2)"><use href="#flower-petal-unit"/><circle cx="0" cy="0" r="7" fill="#ffd98a"/></g>
+            <g class="fl fl3" style="--d:.8s" transform="translate(216 120)" fill="url(#pet3)"><use href="#flower-petal-unit"/><circle cx="0" cy="0" r="6" fill="#ff8fa3"/></g>
+            <g class="fl fl4" style="--d:1.0s" transform="translate(116 150)" fill="url(#pet3)"><use href="#flower-petal-unit"/><circle cx="0" cy="0" r="5" fill="#ffd98a"/></g>
+            <g class="fl fl5" style="--d:1.15s" transform="translate(184 150)" fill="url(#pet1)"><use href="#flower-petal-unit"/><circle cx="0" cy="0" r="5" fill="#ffd98a"/></g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 8: INTERACTIVE BIRTHDAY QUESTION (HÔM NAY CÔNG CHÚA CÓ HẠNH PHÚC HÔNG?) -->
+    <section class="scene" id="sc-question">
+      <div class="qbtns" id="q-buttons">
+        <button class="btn-q btn-q-yes" data-answer="yes" type="button">
+          <span>Có, hạnh phúc lắmm! 🥰</span>
+        </button>
+        <button class="btn-q btn-q-no" data-answer="super" type="button">
+          <span>Siêu hạnh phúc luônn! 💖</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SCENE 9: FINAL BIRTHDAY LETTER & POLAROID PHOTO EXPERIENCE -->
+    <section class="scene" id="sc-final">
+      <div class="final-container">
+        
+        <!-- Left / Top: Polaroid Photo Card -->
+        <div class="final-photo-card glassmorphism">
+          <div class="polaroid-wrapper" id="polaroid-wrapper">
+            <div class="photo-box">
+              <img id="final-photo-img" src="assets/a62152f6-465a-42f5-a1d0-0ec2eaac4a73.jpg" alt="Ảnh kỷ niệm sinh nhật 06/11">
+              <div class="photo-glow-border"></div>
+            </div>
+            <div class="photo-caption-bar">
+              <span class="caption-date">06 • 11 • 2026</span>
+            </div>
+          </div>
+
+          <div class="photo-actions">
+            <button class="btn-sm-action btn-hearts-full" id="btn-fire-hearts" type="button">
+              <span>💖</span>
+            </button>
+            <button class="btn-sm-action btn-bday-wish" id="btn-bday-wish" type="button">
+              <span>🎂</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right / Bottom: The Romantic Birthday Typewriter Letter -->
+        <div class="final-letter-card glassmorphism">
+          <div class="letter-badge">✦ HAPPY BIRTHDAY TO MY PRINCESS • 06.11 ✦</div>
+          <h2 class="letter-heading" id="final-letter-title">Gửi em bé yêu yêu của anh,</h2>
+          
+          <div class="letter-body" id="final-letter-body"></div>
+
+          <div class="letter-footer-actions">
+            <button class="btn-neon-action" id="btn-replay-story" type="button">
+              <span>🔄 Xem lại từ đầu</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- START OVERLAY (MÀN HÌNH MỞ QUÀ SINH NHẬT) -->
+  <div id="start-screen">
+    <div class="start-bud-wrapper">
+      <div class="start-ring"></div>
+      <svg class="bud-svg" viewBox="0 0 120 150">
+        <defs>
+          <linearGradient id="budGrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#ff8fbd"/>
+            <stop offset="1" stop-color="#fff0f7"/>
+          </linearGradient>
+        </defs>
+        <path d="M60 140 C60 110 58 96 60 80" stroke="#6fe0b4" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M60 118 q-26 -4 -30 -26 q26 2 30 26z" fill="#6fe0b4" opacity=".9"/>
+        <path d="M60 86 C34 78 28 44 60 14 C92 44 86 78 60 86Z" fill="url(#budGrad)" stroke="#fff" stroke-opacity=".8"/>
+        <path d="M60 86 C42 80 40 52 60 30 C80 52 78 80 60 86Z" fill="#ffc2dd" opacity=".7"/>
+        <!-- Vương miện nhỏ trên nụ mở màn -->
+        <polygon points="60,6 64,18 76,14 68,24 60,20 52,24 44,14 56,18" fill="#ffd98a" stroke="#fff" stroke-width="1"/>
+      </svg>
+    </div>
+    <h1 class="start-title">Một món quà sinh nhật<br>dành riêng cho em bé yêu Misa 🎂✨</h1>
+    <button class="start-button" type="button">
+      <span>Chạm để mở 💖</span>
+    </button>
+    <p class="start-subtext">Bật âm thanh để giai điệu yêu thương cất lên nhé!!! 🎶</p>
+  </div>
+
+  <!-- Audio Element: Từng Ngày Yêu Em -->
+  <audio id="bgm" loop preload="auto" playsinline src="music.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
